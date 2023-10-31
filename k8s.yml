@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lexeme
+spec:
+  selector:
+    matchLabels:
+      app: lexeme
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lexeme
+    spec:
+      containers:
+      - name: lexeme
+        image: ghcr.io/pagebrain/lexeme
+        resources:
+          requests:
+            cpu: 1m
+        env:
+        - name: OPENAI_API_KEY
+          value: ***
+        - name: ENV
+          value: production
+        livenessProbe:
+          httpGet:
+            path: /lexeme/api/healthz
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /lexeme/api/healthz
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+        ports:
+        - containerPort: 80
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: lexeme
+  name: lexeme
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: lexeme

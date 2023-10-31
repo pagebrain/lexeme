@@ -1,0 +1,32 @@
+apiVersion: skaffold/v4beta2
+kind: Config
+build:
+  artifacts:
+  - image: us-west1-docker.pkg.dev/exoot-1362/confluencesearch/lexeme
+    context: .
+    sync:
+      manual:
+      - src: '**/*.js'
+        dest: .
+      - src: '**/*.jsx'
+        dest: .
+      - src: '**/*.ts'
+        dest: .
+      - src: '**/*.tsx'
+        dest: .
+    docker:
+      buildArgs:
+        ENV: production
+  tagPolicy:
+    gitCommit: {}
+manifests:
+  rawYaml:
+  - ./k8s.yml
+deploy:
+  kubectl: {}
+profiles:
+- name: gcb
+  build:
+    googleCloudBuild:
+      projectId: exoot-1362
+      timeout: 3000s
