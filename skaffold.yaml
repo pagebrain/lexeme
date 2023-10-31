@@ -24,9 +24,3 @@ manifests:
   - ./k8s.yml
 deploy:
   kubectl: {}
-profiles:
-- name: gcb
-  build:
-    googleCloudBuild:
-      projectId: exoot-1362
-      timeout: 3000s
