@@ -2,7 +2,7 @@ apiVersion: skaffold/v4beta2
 kind: Config
 build:
   artifacts:
-  - image: us-west1-docker.pkg.dev/exoot-1362/confluencesearch/lexeme
+  - image: ghcr.io/pagebrain/lexeme
     context: .
     sync:
       manual:
