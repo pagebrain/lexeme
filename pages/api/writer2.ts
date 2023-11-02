@@ -10,12 +10,13 @@ type Data = {
 import type { TaskType } from '@/types/data';
 import  { TasksMap } from '@/types/data';
 const { createParser, ParsedEvent, ReconnectInterval } = require("eventsource-parser");
+const openaiBaseUrl = process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1';
 
 
 
  async function inference(messages, apiKey, modelId, temperature) {
     console.log("START REQUEST")
-    // const response = await fetch(`https://api.openai.com/v1/chat/completions`, {
+    // const response = await fetch(`${openaiBaseUrl}/chat/completions`, {
     //   headers: {
     //     'Content-Type': 'application/json',
     //     Authorization: `Bearer ${ process.env.OPENAI_API_KEY }`,
@@ -46,7 +47,7 @@ const { createParser, ParsedEvent, ReconnectInterval } = require("eventsource-pa
         temperature: parseFloat(temperature),
         stream: true
       })
-    const resx = await fetch("https://api.openai.com/v1/chat/completions", {
+    const resx = await fetch("${openaiBaseUrl}/chat/completions", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${apiKey}`
@@ -54,7 +55,7 @@ const { createParser, ParsedEvent, ReconnectInterval } = require("eventsource-pa
         method: "POST",
         body: payload
       });
-      console.log(`curl -X POST "https://api.openai.com/v1/chat/completions" -H "Authorization: Bearer ${apiKey}" -H "Content-Type: application/json" -d '${payload}'`)
+      console.log(`curl -X POST "${openaiBaseUrl}/chat/completions" -H "Authorization: Bearer ${apiKey}" -H "Content-Type: application/json" -d '${payload}'`)
     // // console.log("Response content:", response.body)
     // const data = await response.json()
     // console.log("Response content:", data)
