@@ -47,7 +47,7 @@ const openaiBaseUrl = process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1'
         temperature: parseFloat(temperature),
         stream: true
       })
-    const resx = await fetch("${openaiBaseUrl}/chat/completions", {
+    const resx = await fetch(`${openaiBaseUrl}/chat/completions`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${apiKey}`
