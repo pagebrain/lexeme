@@ -1,8 +1,9 @@
 export default async function handler(req, res) {
   try {
     const { key } = req.body
+    const openaiBaseUrl = process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1';
 
-    const response = await fetch(`https://api.openai.com/v1/models`, {
+    const response = await fetch(`${openaiBaseUrl }/models`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${key && key != "" ? key : process.env.OPENAI_API_KEY}`,
