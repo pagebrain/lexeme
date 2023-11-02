@@ -143,8 +143,8 @@ h1 {
   overflow: hidden;
   position: absolute;
   text-overflow: ellipsis;
-  top: 8rem;
-  left: 2rem;
+  top: 2rem;
+  left: 1rem;
   font-size: 18px;
   user-select: none;
   display: inline-block;

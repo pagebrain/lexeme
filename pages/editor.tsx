@@ -43,9 +43,9 @@ export function getSavedSettings() : Setting {
     let _setting = localStorage.getItem('settings')
     if(_setting){
         prevSettings = JSON.parse(_setting) as Setting;
-        // if(prevSettings.actionPrompts === undefined){
-        //     prevSettings.actionPrompts = DefaultActions
-        // }
+        if(prevSettings.actionPrompts === undefined){
+            prevSettings.actionPrompts = DefaultActions
+        }
     }
     console.log("GET SETTING", prevSettings)
     return prevSettings;
@@ -122,7 +122,7 @@ function Editor({editorState, onCreateChat, onChange, dtitle, history, onChatUpd
         
         <ToolbarPlugin setting={setting} onCreateChat={onCreateChat} setIsChatOpen={setIsChatOpen} isMobile={isMobile} setIsPromptsOpen={setIsPromptsOpen}/>
         <input className="flex px-4 w-full text-4xl outline-none" contentEditable="true" placeholder="Untitled" value={title} onChange={e => {setTitle(e.target.value); onTitleChange(e.target.value);}}></input>
-        <div className="">
+        <div className="relative">
        
         <RichTextPlugin
               contentEditable={
@@ -452,7 +452,6 @@ export default function App(){
   {(currentDoc !== null && !isNavOpen) && 
   <Editor key={currentDoc.id} editorState={editorState} onCreateChat={onCreateChat} onChange={onChange} history={history} onChatUpdate={onChatUpdate} onTitleChange={onTitleChange} dtitle={currentDoc.title} isChatOpen={isChatOpen} setIsChatOpen={setIsChatOpen} isMobile={isMobile} setIsPromptsOpen={setIsPromptsOpen} setting={setting}/>
   }
-
     </div>
   </div>);
 }

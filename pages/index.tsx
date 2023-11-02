@@ -238,9 +238,6 @@ Data Scientist, Growth Team
         
         <p className="text-2xl text-gray-700 py-8">Experience a fully integrated workflow for brainstorming, writing and rewriting with ChatGPT as your copilot, all within the same window. No more switching back and forth between ChatGPT and Text Editors.</p>
         
-        <div className="mx-auto max-w-5xl">
-        <video className="rounded rounded-lg" src="/lexeme/lexeme.mp4" autoPlay loop playsInline muted></video>
-        </div>
         <Link className="inline-block text-2xl justify-center mt-4 py-4 px-6 transition-colors border border-gray-800 hover:border-sky-900 hover:bg-sky-900 bg-gray-900 text-white rounded-lg mr-4" href="/editor">Try Lexeme</Link>
         <Link className="inline-block text-2xl justify-center mt-4 py-4 px-6 transition-colors border border-gray-300 hover:border-gray-200 hover:bg-gray-200 bg-white rounded-lg" href="https://github.com/pagebrain/lexeme" target="_blank">Github</Link>
       
@@ -259,10 +256,22 @@ Data Scientist, Growth Team
       <div className="relative mx-auto max-w-7xl mt-8 mb-16 px-8">
         <div className="text-center">
             <h2 className='text-4xl font-semibold text-gray-900 mb-4'>Selective Context</h2>
-            <p className="text-2xl text-gray-600 mb-8">When drafting unrelated messages, emails, or announcements, you don&apos;t need to create a &quot;new chat&quot; every time. Just highlight the text you want to edit and smoothly transition into a chat with ChatGPT. And if you only want to rewrite a sentence or two instead of a whole paragraph, you can do that too.</p>
+            <p className="text-2xl text-gray-600 mb-8">Lexeme enables power users to easily collaborate with ChatGPT without constantly copying and pasting. Only selected text will be sent to ChatGPT. This means you can rewrite that once sentence instead of the entire paragraph. Just highlight the text you want to edit and smoothly transition into a chat with ChatGPT.</p>
+        </div>
+        <div className="mx-auto max-w-5xl">
+          <video className="rounded rounded-lg" src="https://static.pagebrain.ai/1080p-video1-24fps.mp4" autoPlay loop playsInline muted></video>
         </div>
       </div>
 
+      <div className="relative mx-auto max-w-7xl mt-8 mb-16 px-8">
+        <div className="text-center">
+            <h2 className='text-4xl font-semibold text-gray-900 mb-4'>Reusable Prompts</h2>
+            <p className="text-2xl text-gray-600 mb-8">You can set your preferred style in the document prompt, and every subsequent chat will use the same prompt. This means you don&apos;t have to create a new chat and repeat yourself every time you want to draft similar but unrelated messages, emails, or announcements.</p>
+        </div>
+        <div className="mx-auto max-w-5xl">
+        <video className="rounded rounded-lg" src="https://static.pagebrain.ai/1080p-video2-24fps.mp4" autoPlay loop playsInline muted></video>
+        </div>
+      </div>
       <div className="relative mx-auto max-w-7xl mt-8 mb-16 px-8">
         <div className="text-center">
           <h2 className='text-4xl font-semibold text-gray-900 mb-4'>Built-in action prompts</h2>
@@ -310,7 +319,7 @@ Data Scientist, Growth Team
         
       </div>
 
-        <div className="flex">
+        <div className="md:flex">
         <ul className="mb-4">
           {useCases[0].documents.map((v, i) => (<li key={i} className={tabClass(i, ucIndex)} onClick={(e)=>handleTabClick(i)}>{v.name}</li>))}
         </ul>
