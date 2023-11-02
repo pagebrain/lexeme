@@ -16,6 +16,8 @@ export default async function handler(
   try {
     const { task, selection, before, after } = req.body;
 
+    const openaiBaseUrl = process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1';
+
 
     // const tokenizer = new GPT3Tokenizer({ type: 'gpt3' });
 
@@ -34,7 +36,7 @@ export default async function handler(
       content: selection
     }]
     
-    const response = await fetch(`https://api.openai.com/v1/chat/completions`, {
+    const response = await fetch(`${openaiBaseUrl}/chat/completions`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${ process.env.OPENAI_API_KEY }`,

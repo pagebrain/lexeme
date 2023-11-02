@@ -17,8 +17,12 @@ npm run dev
 
 Open [http://localhost:3000/lexeme/](http://localhost:3000/lexeme/) with your browser to see the result.
 
+You may specify a custom API endpoint by setting `OPENAI_BASE_URL` environment variable.
+
 ## Deploying on Kubernetes
+
 Update `OPENAI_API_KEY` in `k8s.yml` and then
+
 ```bash
 skaffold run
 # or
